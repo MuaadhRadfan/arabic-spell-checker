@@ -1,0 +1,6 @@
+Flask==2.3.3
+Flask-CORS==4.0.0
+ar-corrector==1.1.6
+pyspellchecker==0.8.3
+pandas==2.3.1
+

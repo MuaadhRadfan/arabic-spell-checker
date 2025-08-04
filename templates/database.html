@@ -1,0 +1,649 @@
+{% extends "base.html" %}
+
+{% block title %}إدارة قاعدة البيانات - {{ super() }}{% endblock %}
+
+{% block page_title %}إدارة قاعدة البيانات{% endblock %}
+
+{% block extra_css %}
+<style>
+    .database-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    .stats-overview {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .stat-card {
+        background: linear-gradient(135deg, var(--primary-color), #2980b9);
+        color: white;
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: var(--shadow-medium);
+        transition: all var(--transition-medium);
+    }
+    
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-heavy);
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 8px;
+        font-family: 'Cairo', sans-serif;
+    }
+    
+    .stat-label {
+        font-size: 1rem;
+        opacity: 0.9;
+    }
+    
+    .main-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+    
+    .form-section {
+        background: var(--bg-primary);
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: var(--shadow-light);
+        border: 1px solid var(--border-color);
+    }
+    
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid var(--border-color);
+    }
+    
+    .section-header h2 {
+        font-family: 'Cairo', sans-serif;
+        font-size: 1.4rem;
+        color: var(--text-primary);
+        margin: 0;
+    }
+    
+    .section-header i {
+        color: var(--primary-color);
+        font-size: 1.3rem;
+    }
+    
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .form-row.full-width {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-results {
+        max-height: 400px;
+        overflow-y: auto;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+    
+    .word-item {
+        padding: 20px;
+        border-bottom: 1px solid var(--border-color);
+        background: var(--bg-secondary);
+        transition: all var(--transition-fast);
+    }
+    
+    .word-item:hover {
+        background: var(--bg-tertiary);
+    }
+    
+    .word-item:last-child {
+        border-bottom: none;
+    }
+    
+    .word-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    
+    .word-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--text-primary);
+    }
+    
+    .word-type {
+        background: var(--primary-color);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+    }
+    
+    .word-details {
+        margin-bottom: 15px;
+        color: var(--text-secondary);
+    }
+    
+    .word-details p {
+        margin: 5px 0;
+    }
+    
+    .word-actions {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .recent-words {
+        grid-column: 1 / -1;
+    }
+    
+    .words-list {
+        display: grid;
+        gap: 15px;
+    }
+    
+    .no-results {
+        text-align: center;
+        padding: 40px 20px;
+        color: var(--text-secondary);
+    }
+    
+    .no-results i {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        opacity: 0.5;
+    }
+    
+    .backup-section {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        padding: 20px;
+        background: var(--bg-secondary);
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        margin-top: 20px;
+    }
+    
+    .backup-info {
+        flex: 1;
+    }
+    
+    .backup-info h4 {
+        color: var(--text-primary);
+        margin-bottom: 5px;
+    }
+    
+    .backup-info p {
+        color: var(--text-secondary);
+        margin: 0;
+        font-size: 0.9rem;
+    }
+    
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 10000;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .modal.show {
+        display: flex;
+    }
+    
+    .modal-content {
+        background: var(--bg-primary);
+        border-radius: 15px;
+        padding: 30px;
+        max-width: 500px;
+        width: 90%;
+        box-shadow: var(--shadow-heavy);
+        border: 1px solid var(--border-color);
+    }
+    
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .modal-title {
+        font-family: 'Cairo', sans-serif;
+        font-size: 1.3rem;
+        color: var(--text-primary);
+        margin: 0;
+    }
+    
+    .modal-close {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--text-secondary);
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 4px;
+        transition: all var(--transition-fast);
+    }
+    
+    .modal-close:hover {
+        background: var(--bg-tertiary);
+        color: var(--accent-color);
+    }
+    
+    @media (max-width: 768px) {
+        .main-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+        
+        .word-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .word-actions {
+            flex-wrap: wrap;
+        }
+        
+        .backup-section {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="database-container" data-page="database">
+    <!-- Statistics Overview -->
+    <div class="stats-overview">
+        <div class="stat-card">
+            <div class="stat-number">{{ statistics.total_custom_words or 0 }}</div>
+            <div class="stat-label">إجمالي الكلمات</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ statistics.recent_words or 0 }}</div>
+            <div class="stat-label">كلمات جديدة هذا الأسبوع</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ statistics.total_corrections or 0 }}</div>
+            <div class="stat-label">التصحيحات المخصصة</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">2.0</div>
+            <div class="stat-label">إصدار قاعدة البيانات</div>
+        </div>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="main-grid">
+        <!-- Add Word Section -->
+        <div class="form-section">
+            <div class="section-header">
+                <i class="fas fa-plus-circle"></i>
+                <h2>إضافة كلمة جديدة</h2>
+            </div>
+            
+            <form id="addWordForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="word">الكلمة *</label>
+                        <input type="text" 
+                               id="word" 
+                               name="word" 
+                               class="form-control" 
+                               placeholder="أدخل الكلمة الجديدة"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="word_type">نوع الكلمة</label>
+                        <select id="word_type" name="word_type" class="form-control form-select">
+                            <option value="اسم">اسم</option>
+                            <option value="فعل">فعل</option>
+                            <option value="صفة">صفة</option>
+                            <option value="ظرف">ظرف</option>
+                            <option value="حرف جر">حرف جر</option>
+                            <option value="حرف عطف">حرف عطف</option>
+                            <option value="ضمير">ضمير</option>
+                            <option value="حرف">حرف</option>
+                            <option value="غير محدد">غير محدد</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="frequency">التكرار</label>
+                        <input type="number" 
+                               id="frequency" 
+                               name="frequency" 
+                               class="form-control" 
+                               value="1" 
+                               min="1">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="root">الجذر</label>
+                        <input type="text" 
+                               id="root" 
+                               name="root" 
+                               class="form-control" 
+                               placeholder="جذر الكلمة (اختياري)">
+                    </div>
+                </div>
+                
+                <div class="form-row full-width">
+                    <div class="form-group">
+                        <label class="form-label" for="synonyms">المرادفات</label>
+                        <input type="text" 
+                               id="synonyms" 
+                               name="synonyms" 
+                               class="form-control" 
+                               placeholder="المرادفات مفصولة بفواصل (اختياري)">
+                    </div>
+                </div>
+                
+                <div class="form-row full-width">
+                    <div class="form-group">
+                        <label class="form-label" for="definition">التعريف</label>
+                        <textarea id="definition" 
+                                  name="definition" 
+                                  class="form-control" 
+                                  rows="3" 
+                                  placeholder="تعريف الكلمة (اختياري)"></textarea>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                    إضافة الكلمة
+                </button>
+            </form>
+        </div>
+
+        <!-- Search Section -->
+        <div class="form-section">
+            <div class="section-header">
+                <i class="fas fa-search"></i>
+                <h2>البحث في قاعدة البيانات</h2>
+            </div>
+            
+            <form id="searchWordsForm">
+                <div class="form-group">
+                    <label class="form-label" for="search_term">كلمة البحث</label>
+                    <input type="text" 
+                           id="search_term" 
+                           name="search_term" 
+                           class="form-control" 
+                           placeholder="ابحث عن كلمة...">
+                </div>
+                
+                <div class="form-row">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                        بحث
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="showAllWords">
+                        <i class="fas fa-list"></i>
+                        عرض جميع الكلمات
+                    </button>
+                </div>
+            </form>
+            
+            <div id="searchResults" class="search-results">
+                <!-- Search results will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Words Section -->
+    <div class="card recent-words">
+        <div class="card-header">
+            <h2 class="card-title">
+                <i class="fas fa-clock"></i>
+                الكلمات المضافة حديثاً
+            </h2>
+        </div>
+        <div class="card-body">
+            {% if recent_words %}
+                <div class="words-list">
+                    {% for word in recent_words %}
+                    <div class="word-item" data-word-id="{{ word.id }}">
+                        <div class="word-header">
+                            <span class="word-title">{{ word.word }}</span>
+                            <span class="word-type">{{ word.word_type }}</span>
+                        </div>
+                        <div class="word-details">
+                            <p><strong>التكرار:</strong> {{ word.frequency }}</p>
+                            {% if word.root %}
+                            <p><strong>الجذر:</strong> {{ word.root }}</p>
+                            {% endif %}
+                            {% if word.definition %}
+                            <p><strong>التعريف:</strong> {{ word.definition }}</p>
+                            {% endif %}
+                            <p><strong>تاريخ الإضافة:</strong> {{ word.created_at|format_date }}</p>
+                        </div>
+                        <div class="word-actions">
+                            <button class="btn btn-sm btn-secondary" 
+                                    data-db-action="edit-word" 
+                                    data-word-id="{{ word.id }}">
+                                <i class="fas fa-edit"></i> تعديل
+                            </button>
+                            <button class="btn btn-sm btn-danger" 
+                                    data-db-action="delete-word" 
+                                    data-word-id="{{ word.id }}">
+                                <i class="fas fa-trash"></i> حذف
+                            </button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="no-results">
+                    <i class="fas fa-database"></i>
+                    <p>لا توجد كلمات في قاعدة البيانات بعد</p>
+                    <p>ابدأ بإضافة كلمات جديدة باستخدام النموذج أعلاه</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Database Management Section -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">
+                <i class="fas fa-cogs"></i>
+                إدارة قاعدة البيانات
+            </h2>
+        </div>
+        <div class="card-body">
+            <div class="backup-section">
+                <div class="backup-info">
+                    <h4>نسخ احتياطي وتصدير</h4>
+                    <p>قم بإنشاء نسخة احتياطية من قاعدة البيانات أو تصدير البيانات</p>
+                </div>
+                <div class="backup-actions">
+                    <button class="btn btn-success" data-db-action="export-database">
+                        <i class="fas fa-download"></i>
+                        تصدير قاعدة البيانات
+                    </button>
+                    <button class="btn btn-secondary" data-db-action="import-database">
+                        <i class="fas fa-upload"></i>
+                        استيراد البيانات
+                    </button>
+                </div>
+            </div>
+            
+            <div class="backup-section">
+                <div class="backup-info">
+                    <h4>إحصائيات متقدمة</h4>
+                    <p>عرض إحصائيات مفصلة حول استخدام قاعدة البيانات</p>
+                </div>
+                <div class="backup-actions">
+                    <button class="btn btn-info" id="showStatistics">
+                        <i class="fas fa-chart-pie"></i>
+                        عرض الإحصائيات
+                    </button>
+                    <button class="btn btn-warning" id="optimizeDatabase">
+                        <i class="fas fa-tools"></i>
+                        تحسين قاعدة البيانات
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Word Modal -->
+<div id="editWordModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">تعديل الكلمة</h3>
+            <button class="modal-close" type="button">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="editWordForm">
+                <input type="hidden" id="edit_word_id" name="word_id">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="edit_word">الكلمة</label>
+                        <input type="text" 
+                               id="edit_word" 
+                               name="word" 
+                               class="form-control" 
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="edit_word_type">نوع الكلمة</label>
+                        <select id="edit_word_type" name="word_type" class="form-control form-select">
+                            <option value="اسم">اسم</option>
+                            <option value="فعل">فعل</option>
+                            <option value="صفة">صفة</option>
+                            <option value="ظرف">ظرف</option>
+                            <option value="حرف جر">حرف جر</option>
+                            <option value="حرف عطف">حرف عطف</option>
+                            <option value="ضمير">ضمير</option>
+                            <option value="حرف">حرف</option>
+                            <option value="غير محدد">غير محدد</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="edit_frequency">التكرار</label>
+                        <input type="number" 
+                               id="edit_frequency" 
+                               name="frequency" 
+                               class="form-control" 
+                               min="1">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="edit_root">الجذر</label>
+                        <input type="text" 
+                               id="edit_root" 
+                               name="root" 
+                               class="form-control">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="edit_synonyms">المرادفات</label>
+                    <input type="text" 
+                           id="edit_synonyms" 
+                           name="synonyms" 
+                           class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="edit_definition">التعريف</label>
+                    <textarea id="edit_definition" 
+                              name="definition" 
+                              class="form-control" 
+                              rows="3"></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i>
+                        حفظ التغييرات
+                    </button>
+                    <button type="button" class="btn btn-secondary modal-close">
+                        <i class="fas fa-times"></i>
+                        إلغاء
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Import Data Modal -->
+<div id="importDataModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">استيراد البيانات</h3>
+            <button class="modal-close" type="button">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="importDataForm">
+                <div class="form-group">
+                    <label class="form-label" for="import_file">ملف البيانات (JSON)</label>
+                    <input type="file" 
+                           id="import_file" 
+                           name="import_file" 
+                           class="form-control" 
+                           accept=".json"
+                           required>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-upload"></i>
+                        استيراد البيانات
+                    </button>
+                    <button type="button" class="btn btn-secondary modal-close">
+                        <i class="fas fa-times"></i>
+                        إلغاء
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/database.js') }}"></script>
+{% endblock %}
+

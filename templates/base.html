@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}نظام ذكي لتصحيح الأخطاء الإملائية في النصوص العربية{% endblock %}</title>
+    
+    <!-- External CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+<h3><i class="fas fa-spell-check"></i> صحّح</h3>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="menu-item">
+                <a href="{{ url_for('index') }}" class="menu-link {% if request.endpoint == 'index' %}active{% endif %}">
+                    <i class="fas fa-home"></i>
+                    <span>الصفحة الرئيسية</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{ url_for('about') }}" class="menu-link {% if request.endpoint == 'about' %}active{% endif %}">
+                    <i class="fas fa-info-circle"></i>
+                    <span>حول المشروع</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{ url_for('features') }}" class="menu-link {% if request.endpoint == 'features' %}active{% endif %}">
+                    <i class="fas fa-star"></i>
+                    <span>المميزات</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{ url_for('demo') }}" class="menu-link {% if request.endpoint == 'demo' %}active{% endif %}">
+                    <i class="fas fa-play-circle"></i>
+                    <span>العرض التوضيحي</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{ url_for('database_management') }}" class="menu-link {% if request.endpoint == 'database_management' %}active{% endif %}">
+                    <i class="fas fa-database"></i>
+                    <span>إدارة قاعدة البيانات</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{ url_for('future') }}" class="menu-link {% if request.endpoint == 'future' %}active{% endif %}">
+                    <i class="fas fa-rocket"></i>
+                    <span>المميزات المستقبلية</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{ url_for('conclusion') }}" class="menu-link {% if request.endpoint == 'conclusion' %}active{% endif %}">
+                    <i class="fas fa-flag-checkered"></i>
+                    <span>الخاتمة</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="system-info">
+                <p><i class="fas fa-copyright"></i> حقوق النشر محفوظة قسم علوم البيانات</p>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="header-left">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title">{% block page_title %}نظام التدقيق الإملائي{% endblock %}</h1>
+            </div>
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="action-btn" id="themeToggle" title="تغيير المظهر">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="action-btn" id="fullscreenToggle" title="ملء الشاشة">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Page Content -->
+        <div class="page-content">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+                                <i class="fas fa-{% if category == 'error' %}exclamation-triangle{% elif category == 'success' %}check-circle{% else %}info-circle{% endif %}"></i>
+                                {{ message }}
+                                <button class="alert-close">&times;</button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+    
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>جاري المعالجة...</p>
+        </div>
+    </div>
+    
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+    
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/utils.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/notifications.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/loading.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/navigation.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/corrector-display.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/word-editor.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
+

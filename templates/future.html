@@ -1,0 +1,796 @@
+{% extends "base.html" %}
+
+{% block title %}المميزات المستقبلية - {{ super() }}{% endblock %}
+
+{% block page_title %}المميزات المستقبلية{% endblock %}
+
+{% block content %}
+<div class="future-container">
+    <!-- Future Vision -->
+    <div class="card future-vision">
+        <div class="card-header">
+            <h2 class="card-title">
+                <i class="fas fa-rocket"></i>
+                رؤيتنا المستقبلية
+            </h2>
+        </div>
+        <div class="card-body">
+            <div class="vision-content">
+                <div class="vision-text">
+                    <h3>نحو مستقبل أفضل للغة العربية</h3>
+                    <p class="vision-description">
+                        نسعى لتطوير نظام شامل ومتكامل يدعم اللغة العربية بجميع جوانبها، 
+                        من التدقيق الإملائي والنحوي إلى التحليل الدلالي والترجمة الآلية. 
+                        هدفنا هو جعل التكنولوجيا في خدمة اللغة العربية وتعزيز مكانتها في العصر الرقمي.
+                    </p>
+                </div>
+                <div class="vision-image">
+                    <img src="{{ url_for('static', filename='images/future-tech.jpg') }}" 
+                         alt="تكنولوجيا المستقبل" 
+                         class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Roadmap -->
+    <div class="card roadmap-section">
+        <div class="card-header">
+            <h2 class="card-title">
+                <i class="fas fa-road"></i>
+                خارطة الطريق
+            </h2>
+        </div>
+        <div class="card-body">
+            <div class="roadmap">
+                <div class="roadmap-item completed">
+                    <div class="roadmap-marker">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="roadmap-content">
+                        <h4>الإصدار 1.0 - الأساسيات</h4>
+                        <p>تدقيق إملائي أساسي مع واجهة ويب بسيطة</p>
+
+                    </div>
+                </div>
+
+                <div class="roadmap-item current">
+                    <div class="roadmap-marker">
+                        <i class="fas fa-cog fa-spin"></i>
+                    </div>
+                    <div class="roadmap-content">
+                        <h4>الإصدار 2.0 - التحسينات</h4>
+                        <p>واجهة محسنة، إدارة قاعدة البيانات، تفاعل مباشر مع الكلمات</p>
+
+                    </div>
+                </div>
+
+                <div class="roadmap-item future">
+                    <div class="roadmap-marker">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="roadmap-content">
+                        <h4>الإصدار 3.0 - الذكاء الاصطناعي</h4>
+                        <p>تدقيق نحوي متقدم، تحليل سياقي، تعلم آلي</p>
+
+                    </div>
+                </div>
+
+                <div class="roadmap-item future">
+                    <div class="roadmap-marker">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="roadmap-content">
+                        <h4>الإصدار 4.0 - التطبيقات المحمولة</h4>
+                        <p>تطبيقات للهواتف الذكية، مزامنة سحابية، عمل بدون إنترنت</p>
+
+                    </div>
+                </div>
+
+                <div class="roadmap-item future">
+                    <div class="roadmap-marker">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="roadmap-content">
+                        <h4>الإصدار 5.0 - التكامل العالمي</h4>
+                        <p>دعم لهجات متعددة، ترجمة آلية، تكامل مع منصات أخرى</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upcoming Features -->
+    <div class="card upcoming-features">
+        <div class="card-header">
+            <h2 class="card-title">
+                <i class="fas fa-star"></i>
+                المميزات القادمة
+            </h2>
+        </div>
+        <div class="card-body">
+            <div class="features-grid">
+                <div class="feature-card ai-powered">
+                    <div class="feature-header">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>ذكاء اصطناعي متقدم</h3>
+                        <span class="feature-status coming-soon">قريباً</span>
+                    </div>
+                    <div class="feature-content">
+                        <p>تطوير نماذج ذكاء اصطناعي متخصصة في اللغة العربية لتحسين دقة التدقيق والفهم السياقي</p>
+                        <ul class="feature-benefits">
+                            <li>تحليل سياقي عميق للنصوص</li>
+                            <li>فهم المعاني والدلالات</li>
+                            <li>تصحيح نحوي متقدم</li>
+                            <li>اقتراحات أسلوبية</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card grammar-check">
+                    <div class="feature-header">
+                        <div class="feature-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3>تدقيق نحوي شامل</h3>
+                        <span class="feature-status in-development">قيد التطوير</span>
+                    </div>
+                    <div class="feature-content">
+                        <p>نظام متكامل لتدقيق القواعد النحوية والصرفية مع شرح الأخطاء وتقديم التوضيحات</p>
+                        <ul class="feature-benefits">
+                            <li>تحليل الإعراب والبناء</li>
+                            <li>تصحيح أخطاء التذكير والتأنيث</li>
+                            <li>مراجعة أدوات الربط</li>
+                            <li>شرح القواعد النحوية</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card voice-input">
+                    <div class="feature-header">
+                        <div class="feature-icon">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <h3>إدخال صوتي</h3>
+                        <span class="feature-status planned">مخطط</span>
+                    </div>
+                    <div class="feature-content">
+                        <p>إمكانية إدخال النصوص عبر الصوت مع تحويل الكلام إلى نص وتدقيقه تلقائياً</p>
+                        <ul class="feature-benefits">
+                            <li>تحويل الكلام إلى نص</li>
+                            <li>دعم اللهجات المختلفة</li>
+                            <li>تدقيق فوري للنص المحول</li>
+                            <li>تحسين جودة التسجيل</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card mobile-apps">
+                    <div class="feature-header">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>تطبيقات محمولة</h3>
+                        <span class="feature-status planned">مخطط</span>
+                    </div>
+                    <div class="feature-content">
+                        <p>تطبيقات للهواتف الذكية والأجهزة اللوحية مع إمكانية العمل بدون إنترنت</p>
+                        <ul class="feature-benefits">
+                            <li>تطبيق iOS و Android</li>
+                            <li>عمل بدون إنترنت</li>
+                            <li>مزامنة مع الحساب الشخصي</li>
+                            <li>واجهة محسنة للشاشات الصغيرة</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card api-integration">
+                    <div class="feature-header">
+                        <div class="feature-icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <h3>واجهة برمجية (API)</h3>
+                        <span class="feature-status coming-soon">قريباً</span>
+                    </div>
+                    <div class="feature-content">
+                        <p>واجهة برمجية للمطورين لدمج خدمات التدقيق في تطبيقاتهم ومواقعهم</p>
+                        <ul class="feature-benefits">
+                            <li>API RESTful سهل الاستخدام</li>
+                            <li>وثائق شاملة للمطورين</li>
+                            <li>أمثلة بلغات برمجة متعددة</li>
+                            <li>دعم فني للمطورين</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card cloud-sync">
+                    <div class="feature-header">
+                        <div class="feature-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h3>مزامنة سحابية</h3>
+                        <span class="feature-status planned">مخطط</span>
+                    </div>
+                    <div class="feature-content">
+                        <p>حفظ النصوص والإعدادات في السحابة مع إمكانية الوصول من أي جهاز</p>
+                        <ul class="feature-benefits">
+                            <li>حفظ تلقائي للنصوص</li>
+                            <li>مزامنة الإعدادات الشخصية</li>
+                            <li>تاريخ التعديلات</li>
+                            <li>نسخ احتياطي آمن</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technology Stack -->
+    <div class="card tech-stack">
+        <div class="card-header">
+            <h2 class="card-title">
+                <i class="fas fa-cogs"></i>
+                التقنيات المستقبلية
+            </h2>
+        </div>
+        <div class="card-body">
+            <div class="tech-categories">
+                <div class="tech-category">
+                    <h3><i class="fas fa-brain"></i> الذكاء الاصطناعي</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <h4>نماذج اللغة الكبيرة (LLM)</h4>
+                            <p>تطوير نماذج متخصصة في اللغة العربية</p>
+                        </div>
+                        <div class="tech-item">
+                            <h4>التعلم العميق</h4>
+                            <p>شبكات عصبية متقدمة لفهم السياق</p>
+                        </div>
+                        <div class="tech-item">
+                            <h4>معالجة اللغة الطبيعية</h4>
+                            <p>خوارزميات متطورة لتحليل النصوص</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3><i class="fas fa-mobile-alt"></i> تطوير التطبيقات</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <h4>React Native</h4>
+                            <p>تطوير تطبيقات متعددة المنصات</p>
+                        </div>
+                        <div class="tech-item">
+                            <h4>Flutter</h4>
+                            <p>واجهات مستخدم سريعة وجميلة</p>
+                        </div>
+                        <div class="tech-item">
+                            <h4>Progressive Web Apps</h4>
+                            <p>تطبيقات ويب بمميزات التطبيقات المحمولة</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3><i class="fas fa-cloud"></i> البنية السحابية</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <h4>Microservices</h4>
+                            <p>بنية خدمات مصغرة قابلة للتوسع</p>
+                        </div>
+                        <div class="tech-item">
+                            <h4>Kubernetes</h4>
+                            <p>إدارة وتوزيع التطبيقات</p>
+                        </div>
+                        <div class="tech-item">
+                            <h4>Edge Computing</h4>
+                            <p>معالجة سريعة قريبة من المستخدم</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Community & Collaboration -->
+    <div class="card community-section">
+        <div class="card-header">
+            <h2 class="card-title">
+                <i class="fas fa-users"></i>
+                المجتمع والتعاون
+            </h2>
+        </div>
+        <div class="card-body">
+            <div class="community-content">
+                <div class="community-text">
+                    <h3>بناء مجتمع متفاعل</h3>
+                    <p>
+                        نؤمن بأهمية المجتمع في تطوير وتحسين النظام. نسعى لبناء مجتمع نشط من 
+                        المطورين والباحثين والمستخدمين للمساهمة في تطوير أدوات أفضل للغة العربية.
+                    </p>
+                    
+                    <div class="community-features">
+                        <div class="community-feature">
+                            <i class="fas fa-code-branch"></i>
+                            <div>
+                                <h4>مفتوح المصدر</h4>
+                                <p>إتاحة الكود للمجتمع للمساهمة والتطوير</p>
+                            </div>
+                        </div>
+                        
+                        <div class="community-feature">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <h4>برامج تدريبية</h4>
+                                <p>ورش عمل ودورات لتعليم تقنيات معالجة اللغة العربية</p>
+                            </div>
+                        </div>
+                        
+                        <div class="community-feature">
+                            <i class="fas fa-handshake"></i>
+                            <div>
+                                <h4>شراكات أكاديمية</h4>
+                                <p>التعاون مع الجامعات ومراكز البحث</p>
+                            </div>
+                        </div>
+                        
+                        <div class="community-feature">
+                            <i class="fas fa-trophy"></i>
+                            <div>
+                                <h4>مسابقات وجوائز</h4>
+                                <p>تحفيز الابتكار في مجال تقنيات اللغة العربية</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="card cta-section">
+        <div class="card-body">
+            <div class="cta-content">
+                <h2>كن جزءاً من المستقبل</h2>
+                <p>
+                    انضم إلينا في رحلة تطوير أدوات متقدمة للغة العربية. 
+                    سواء كنت مطوراً أو باحثاً أو مهتماً باللغة العربية، يمكنك المساهمة في هذا المشروع.
+                </p>
+                <div class="cta-buttons">
+                    <a href="{{ url_for('database_management') }}" class="btn btn-primary">
+                        <i class="fas fa-database"></i>
+                        ساهم في قاعدة البيانات
+                    </a>
+                    <a href="{{ url_for('demo') }}" class="btn btn-secondary">
+                        <i class="fas fa-play"></i>
+                        جرب النظام الآن
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.future-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.future-vision {
+    margin-bottom: 30px;
+}
+
+.vision-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.vision-text h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-family: 'Cairo', sans-serif;
+}
+
+.vision-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.vision-image img {
+    border-radius: 15px;
+    box-shadow: var(--shadow-medium);
+    width: 100%;
+    height: auto;
+}
+
+.roadmap {
+    position: relative;
+    padding: 20px 0;
+}
+
+.roadmap::before {
+    content: '';
+    position: absolute;
+    right: 30px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--success-color), var(--primary-color), var(--border-color));
+}
+
+.roadmap-item {
+    position: relative;
+    margin-bottom: 40px;
+    padding-right: 80px;
+}
+
+.roadmap-marker {
+    position: absolute;
+    right: 15px;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.9rem;
+    z-index: 2;
+}
+
+.roadmap-item.completed .roadmap-marker {
+    background: var(--success-color);
+}
+
+.roadmap-item.current .roadmap-marker {
+    background: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.3);
+}
+
+.roadmap-item.future .roadmap-marker {
+    background: var(--border-color);
+    color: var(--text-secondary);
+}
+
+.roadmap-content {
+    background: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-medium);
+}
+
+.roadmap-content:hover {
+    transform: translateX(-5px);
+    box-shadow: var(--shadow-light);
+}
+
+.roadmap-content h4 {
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.roadmap-content p {
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.roadmap-date {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+}
+
+.feature-card {
+    background: var(--bg-secondary);
+    border-radius: 15px;
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-medium);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.feature-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.feature-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, var(--primary-color), #2980b9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.3rem;
+}
+
+.feature-header h3 {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    margin: 0 15px 0 0;
+    flex: 1;
+}
+
+.feature-status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+}
+
+.feature-status.coming-soon {
+    background: var(--success-color);
+}
+
+.feature-status.in-development {
+    background: var(--warning-color);
+}
+
+.feature-status.planned {
+    background: var(--border-color);
+    color: var(--text-secondary);
+}
+
+.feature-content {
+    flex: 1;
+}
+
+.feature-content p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.feature-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-benefits li {
+    padding: 8px 0;
+    color: var(--text-secondary);
+    position: relative;
+    padding-right: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.feature-benefits li:last-child {
+    border-bottom: none;
+}
+
+.feature-benefits li::before {
+    content: '→';
+    position: absolute;
+    right: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.tech-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.tech-category h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.3rem;
+}
+
+.tech-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tech-item {
+    background: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-medium);
+}
+
+.tech-item:hover {
+    transform: translateX(-5px);
+    box-shadow: var(--shadow-light);
+}
+
+.tech-item h4 {
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.tech-item p {
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.community-content {
+    text-align: center;
+}
+
+.community-content h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.community-content > p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    margin-bottom: 30px;
+}
+
+.community-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.community-feature {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    text-align: right;
+    transition: all var(--transition-medium);
+}
+
+.community-feature:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-light);
+}
+
+.community-feature i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.community-feature h4 {
+    color: var(--text-primary);
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.community-feature p {
+    color: var(--text-secondary);
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.cta-section {
+    background: linear-gradient(135deg, var(--primary-color), #2980b9);
+    color: white;
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-family: 'Cairo', sans-serif;
+}
+
+.cta-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-buttons .btn {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 25px;
+    transition: all var(--transition-medium);
+}
+
+.cta-buttons .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .vision-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .roadmap::before {
+        right: 20px;
+    }
+    
+    .roadmap-item {
+        padding-right: 60px;
+    }
+    
+    .roadmap-marker {
+        right: 5px;
+        width: 25px;
+        height: 25px;
+        font-size: 0.8rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .feature-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .tech-categories {
+        grid-template-columns: 1fr;
+    }
+    
+    .community-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .community-feature {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style>
+{% endblock %}
+

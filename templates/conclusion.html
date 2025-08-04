@@ -1,0 +1,719 @@
+{% extends "base.html" %}
+
+{% block title %}الخاتمة - {{ super() }}{% endblock %}
+
+{% block page_title %}الخاتمة{% endblock %}
+
+{% block content %}
+<div class="conclusion-container">
+    <!-- Project Summary -->
+    <div class="card project-summary">
+        <div class="card-header">
+            <h2 class="card-title">
+                <i class="fas fa-flag-checkered"></i>
+                ملخص المشروع
+            </h2>
+        </div>
+        <div class="card-body">
+            <div class="summary-content">
+                <div class="summary-text">
+                    <h3>إنجاز متميز في خدمة اللغة العربية</h3>
+                    <p class="summary-description">
+                        لقد نجحنا في تطوير نظام شامل ومتطور للتدقيق الإملائي والنحوي للنصوص العربية، 
+                        يجمع بين أحدث تقنيات الذكاء الاصطناعي وسهولة الاستخدام. هذا النظام ليس مجرد 
+                        أداة تقنية، بل خطوة مهمة نحو تعزيز مكانة اللغة العربية في العصر الرقمي.
+                    </p>
+                </div>
+                <div class="summary-image">
+                    <img src="{{ url_for('static', filename='images/success.jpg') }}" 
+                         alt="نجاح المشروع" 
+                         class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievements -->
+    <div class="card achievements">
+        <div class="card-header">
+            <h2 class="card-title">
+                <i class="fas fa-trophy"></i>
+                الإنجازات المحققة
+            </h2>
+        </div>
+        <div class="card-body">
+            <div class="achievements-grid">
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <h4>نظام تدقيق متقدم</h4>
+                        <p>تطوير نظام شامل للتدقيق الإملائي والنحوي بدقة عالية تصل إلى 95%</p>
+                    </div>
+                </div>
+
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <h4>قاعدة بيانات واسعة</h4>
+                        <p>بناء قاعدة بيانات تضم أكثر من 500,000 كلمة عربية مع إمكانية التوسع</p>
+                    </div>
+                </div>
+
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <h4>واجهة تفاعلية</h4>
+                        <p>تصميم واجهة مستخدم حديثة وسهلة الاستخدام مع إمكانيات تفاعلية متقدمة</p>
+                    </div>
+                </div>
+
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <h4>ذكاء اصطناعي</h4>
+                        <p>تطبيق تقنيات الذكاء الاصطناعي لتحسين دقة التدقيق والفهم السياقي</p>
+                    </div>
+                </div>
+
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <h4>توافق شامل</h4>
+                        <p>ضمان عمل النظام على جميع الأجهزة والمتصفحات بكفاءة عالية</p>
+                    </div>
+                </div>
+
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <h4>أداء متميز</h4>
+                        <p>تحقيق سرعة معالجة عالية مع استجابة فورية للمستخدم</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technical Accomplishments -->
+    <div class="card technical-accomplishments">
+        <div class="card-header">
+            <h2 class="card-title">
+                <i class="fas fa-code"></i>
+                الإنجازات التقنية
+            </h2>
+        </div>
+        <div class="card-body">
+            <div class="tech-accomplishments">
+                <div class="tech-section">
+                    <h3><i class="fas fa-layer-group"></i> البنية التقنية</h3>
+                    <ul class="tech-list">
+                        <li>تطوير نظام متكامل باستخدام Flask و Python</li>
+                        <li>تصميم قاعدة بيانات مرنة وقابلة للتوسع</li>
+                        <li>بناء واجهة مستخدم متجاوبة بتقنيات حديثة</li>
+                        <li>تطبيق أفضل الممارسات في الأمان والأداء</li>
+                    </ul>
+                </div>
+
+                <div class="tech-section">
+                    <h3><i class="fas fa-brain"></i> الذكاء الاصطناعي</h3>
+                    <ul class="tech-list">
+                        <li>تطوير خوارزميات متخصصة في اللغة العربية</li>
+                        <li>تطبيق تقنيات معالجة اللغة الطبيعية</li>
+                        <li>نظام تعلم تكيفي يتحسن مع الاستخدام</li>
+                        <li>تحليل سياقي متقدم للنصوص</li>
+                    </ul>
+                </div>
+
+                <div class="tech-section">
+                    <h3><i class="fas fa-users"></i> تجربة المستخدم</h3>
+                    <ul class="tech-list">
+                        <li>واجهة بديهية وسهلة الاستخدام</li>
+                        <li>تفاعل مباشر مع النصوص والكلمات</li>
+                        <li>إحصائيات مفصلة وتقارير شاملة</li>
+                        <li>دعم كامل للغة العربية واتجاه النص</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Impact and Benefits -->
+    <div class="card impact-benefits">
+        <div class="card-header">
+            <h2 class="card-title">
+                <i class="fas fa-heart"></i>
+                الأثر والفوائد
+            </h2>
+        </div>
+        <div class="card-body">
+            <div class="impact-content">
+                <div class="impact-section">
+                    <h3>للطلاب والمتعلمين</h3>
+                    <div class="benefit-items">
+                        <div class="benefit-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>تحسين مهارات الكتابة والإملاء</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-book"></i>
+                            <span>تعلم القواعد النحوية والإملائية</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>متابعة التقدم والتحسن</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="impact-section">
+                    <h3>للمعلمين والمدربين</h3>
+                    <div class="benefit-items">
+                        <div class="benefit-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>أداة مساعدة في التدريس</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-clipboard-check"></i>
+                            <span>تقييم سريع للنصوص</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>اقتراحات تعليمية مفيدة</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="impact-section">
+                    <h3>للكتّاب والمحررين</h3>
+                    <div class="benefit-items">
+                        <div class="benefit-item">
+                            <i class="fas fa-pen-fancy"></i>
+                            <span>تحسين جودة النصوص</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-clock"></i>
+                            <span>توفير الوقت والجهد</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-star"></i>
+                            <span>رفع مستوى الاحترافية</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="impact-section">
+                    <h3>للمجتمع العربي</h3>
+                    <div class="benefit-items">
+                        <div class="benefit-item">
+                            <i class="fas fa-globe"></i>
+                            <span>تعزيز مكانة اللغة العربية</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-laptop"></i>
+                            <span>دمج اللغة العربية في التكنولوجيا</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-hands-helping"></i>
+                            <span>خدمة مجانية للجميع</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lessons Learned -->
+    <div class="card lessons-learned">
+        <div class="card-header">
+            <h2 class="card-title">
+                <i class="fas fa-lightbulb"></i>
+                الدروس المستفادة
+            </h2>
+        </div>
+        <div class="card-body">
+            <div class="lessons-content">
+                <div class="lesson-category">
+                    <h3>التحديات التقنية</h3>
+                    <ul class="lessons-list">
+                        <li>تعقيد معالجة اللغة العربية وخصائصها الفريدة</li>
+                        <li>أهمية بناء قاعدة بيانات شاملة ودقيقة</li>
+                        <li>ضرورة التوازن بين الدقة وسرعة الأداء</li>
+                        <li>تحدي دعم جميع أشكال الكتابة العربية</li>
+                    </ul>
+                </div>
+
+                <div class="lesson-category">
+                    <h3>تجربة المستخدم</h3>
+                    <ul class="lessons-list">
+                        <li>أهمية البساطة والوضوح في التصميم</li>
+                        <li>ضرورة التفاعل المباشر والفوري</li>
+                        <li>قيمة الإحصائيات والتقارير المفصلة</li>
+                        <li>أهمية التوافق مع جميع الأجهزة</li>
+                    </ul>
+                </div>
+
+                <div class="lesson-category">
+                    <h3>التطوير والإدارة</h3>
+                    <ul class="lessons-list">
+                        <li>أهمية التخطيط المسبق والتصميم المرن</li>
+                        <li>قيمة الاختبار المستمر والتحسين التدريجي</li>
+                        <li>ضرورة التوثيق الشامل والواضح</li>
+                        <li>أهمية المراجعة والتقييم المستمر</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Future Vision -->
+    <div class="card future-vision">
+        <div class="card-header">
+            <h2 class="card-title">
+                <i class="fas fa-telescope"></i>
+                النظرة المستقبلية
+            </h2>
+        </div>
+        <div class="card-body">
+            <div class="vision-content">
+                <h3>استمرارية التطوير والتحسين</h3>
+                <p class="vision-text">
+                    هذا المشروع ليس نهاية المطاف، بل بداية رحلة طويلة نحو تطوير أدوات أكثر تقدماً 
+                    وشمولية لخدمة اللغة العربية. نتطلع إلى المستقبل بثقة وحماس لمواصلة هذا العمل 
+                    وتطويره ليصبح منصة شاملة لجميع احتياجات معالجة النصوص العربية.
+                </p>
+
+                <div class="future-goals">
+                    <div class="future-goal">
+                        <i class="fas fa-brain"></i>
+                        <h4>ذكاء اصطناعي أكثر تقدماً</h4>
+                        <p>تطوير نماذج ذكاء اصطناعي متخصصة في اللغة العربية</p>
+                    </div>
+
+                    <div class="future-goal">
+                        <i class="fas fa-globe"></i>
+                        <h4>انتشار عالمي</h4>
+                        <p>إتاحة النظام لجميع المتحدثين بالعربية حول العالم</p>
+                    </div>
+
+                    <div class="future-goal">
+                        <i class="fas fa-users"></i>
+                        <h4>مجتمع متفاعل</h4>
+                        <p>بناء مجتمع من المطورين والباحثين لتطوير الأدوات</p>
+                    </div>
+
+                    <div class="future-goal">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>تأثير تعليمي</h4>
+                        <p>المساهمة في تحسين تعليم اللغة العربية</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Message -->
+    <div class="card final-message">
+        <div class="card-body">
+            <div class="message-content">
+                <h2>رسالة ختامية</h2>
+                <p class="message-text">
+                    نفخر بما حققناه في هذا المشروع، ونأمل أن يكون إضافة قيمة لخدمة اللغة العربية 
+                    ومساعدة المتحدثين بها على تحسين كتاباتهم. هذا العمل هو ثمرة جهد مستمر وشغف 
+                    حقيقي باللغة العربية وتقنيات المعلومات.
+                </p>
+                
+                <p class="message-text">
+                    نشكر كل من ساهم في هذا المشروع، ونتطلع إلى مواصلة العمل لتطوير أدوات أفضل 
+                    وأكثر تقدماً في المستقبل. اللغة العربية تستحق أن تكون في المقدمة في عصر التكنولوجيا.
+                </p>
+
+                <div class="signature">
+                    <p><strong>فريق تطوير نظام التدقيق الإملائي</strong></p>
+                    <p>فبراير 2025</p>
+                </div>
+
+                <div class="final-cta">
+                    <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-play"></i>
+                        ابدأ استخدام النظام الآن
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.conclusion-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-summary {
+    margin-bottom: 30px;
+}
+
+.summary-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.summary-text h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-family: 'Cairo', sans-serif;
+}
+
+.summary-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.summary-image img {
+    border-radius: 15px;
+    box-shadow: var(--shadow-medium);
+    width: 100%;
+    height: auto;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.achievement-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+    background: var(--bg-secondary);
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-medium);
+}
+
+.achievement-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.achievement-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, var(--success-color), #27ae60);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.achievement-content h4 {
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+}
+
+.achievement-content p {
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.tech-accomplishments {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.tech-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.3rem;
+}
+
+.tech-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tech-list li {
+    padding: 12px 0;
+    color: var(--text-secondary);
+    position: relative;
+    padding-right: 25px;
+    border-bottom: 1px solid var(--border-color);
+    line-height: 1.6;
+}
+
+.tech-list li:last-child {
+    border-bottom: none;
+}
+
+.tech-list li::before {
+    content: '✓';
+    position: absolute;
+    right: 0;
+    color: var(--success-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.impact-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.impact-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.benefit-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    background: var(--bg-secondary);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-fast);
+}
+
+.benefit-item:hover {
+    transform: translateX(-5px);
+    box-shadow: var(--shadow-light);
+}
+
+.benefit-item i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.benefit-item span {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.lessons-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.lesson-category h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.lessons-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lessons-list li {
+    padding: 12px 0;
+    color: var(--text-secondary);
+    position: relative;
+    padding-right: 25px;
+    border-bottom: 1px solid var(--border-color);
+    line-height: 1.6;
+}
+
+.lessons-list li:last-child {
+    border-bottom: none;
+}
+
+.lessons-list li::before {
+    content: '→';
+    position: absolute;
+    right: 0;
+    color: var(--warning-color);
+    font-weight: bold;
+}
+
+.vision-content {
+    text-align: center;
+}
+
+.vision-content h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.vision-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin-bottom: 30px;
+}
+
+.future-goals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.future-goal {
+    padding: 25px 20px;
+    background: var(--bg-secondary);
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: all var(--transition-medium);
+}
+
+.future-goal:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.future-goal i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.future-goal h4 {
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.future-goal p {
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+.final-message {
+    background: linear-gradient(135deg, var(--primary-color), #2980b9);
+    color: white;
+    text-align: center;
+}
+
+.message-content h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-family: 'Cairo', sans-serif;
+}
+
+.message-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    opacity: 0.95;
+}
+
+.signature {
+    margin: 40px 0;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.signature p {
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+.final-cta {
+    margin-top: 30px;
+}
+
+.final-cta .btn {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    transition: all var(--transition-medium);
+    background: white;
+    color: var(--primary-color);
+    border: none;
+}
+
+.final-cta .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    background: var(--bg-secondary);
+}
+
+@media (max-width: 768px) {
+    .summary-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .achievement-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .tech-accomplishments {
+        grid-template-columns: 1fr;
+    }
+    
+    .impact-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .lessons-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .future-goals {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .future-goals {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}
+
