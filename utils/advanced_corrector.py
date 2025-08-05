@@ -8,7 +8,7 @@ class AdvancedArabicCorrector:
     def __init__(self):
         # Load pre-trained GEC model and tokenizer from Hugging Face
         # Using a model identified from search results that is suitable for Arabic GEC
-        model_name = "CAMeL-Lab/arabart-qalb14-gec-ged-13"
+        model_name = "alnnahwi/gemma-3-1b-arabic-gec-v1"
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
         self.gec_pipeline = pipeline("text2text-generation", model=self.model, tokenizer=self.tokenizer)
