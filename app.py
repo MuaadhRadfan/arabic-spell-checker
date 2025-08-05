@@ -8,7 +8,7 @@ from datetime import datetime
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # Import our custom modules
-from utils.advanced_corrector import AdvancedArabicCorrector
+from utils.simple_corrector import SimpleArabicCorrector
 from database.operations import DatabaseOperations
 from utils.helpers import validate_word_data, format_date, calculate_text_statistics
 
@@ -19,7 +19,7 @@ app.secret_key = 'enhanced_spell_checker_secret_key_2025'
 CORS(app)
 
 # Initialize components
-corrector = AdvancedArabicCorrector()
+corrector = SimpleArabicCorrector()
 db_ops = DatabaseOperations()
 
 # Routes for main pages
