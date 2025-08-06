@@ -60,7 +60,8 @@ class AdvancedArabicCorrector:
                 early_stopping=True
             )
             
-            corrected_text = corrected_output[0][\'generated_text\']
+        
+            corrected_text = corrected_output[0]['generated_text']
             
             # تحليل الأخطاء والإحصائيات
             corrections, stats = self._analyze_corrections(text, corrected_text)
