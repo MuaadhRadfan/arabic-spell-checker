@@ -89,7 +89,8 @@ class AdvancedArabicCorrector:
         تنظيف النص قبل المعالجة
         """
         # إزالة المسافات الزائدة
-        text = re.sub(r\'\\s+\', \' \', text.strip())
+        
+        text = re.sub(r'\s+', ' ', text.strip())
         return text
 
     def _analyze_corrections(self, original_text, corrected_text):
