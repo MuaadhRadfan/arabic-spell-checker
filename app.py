@@ -8,7 +8,8 @@ from datetime import datetime
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # Import our custom modules
-from utils.simple_corrector import SimpleArabicCorrector
+from utils.advanced_corrector import AdvancedArabicCorrector
+# from utils.simple_corrector import SimpleArabicCorrector # Commented out
 from database.operations import DatabaseOperations
 from utils.helpers import validate_word_data, format_date, calculate_text_statistics
 
@@ -19,7 +20,8 @@ app.secret_key = 'enhanced_spell_checker_secret_key_2025'
 CORS(app)
 
 # Initialize components
-corrector = SimpleArabicCorrector()
+corrector = AdvancedArabicCorrector()
+# corrector = SimpleArabicCorrector() # Commented out
 db_ops = DatabaseOperations()
 
 # Routes for main pages
@@ -90,7 +92,7 @@ def api_correct_text():
             'original_text': result['original_text'],
             'corrected_text': result['corrected_text'],
             'corrections': result['corrections'],
-            'statistics': result['statistics']
+            'statistics': result['stats'] # Changed 'statistics' to 'stats' to match advanced_corrector.py
         })
         
     except Exception as e:
@@ -112,22 +114,14 @@ def api_suggest_addition():
                 'error': 'الكلمة مطلوبة'
             }), 400
         
-        suggestion = corrector.suggest_word_addition(word)
-        
-        if suggestion['suggest_addition']:
-            word_suggestions = corrector.get_word_suggestions_for_addition(word)
-            return jsonify({
-                'success': True,
-                'suggest_addition': True,
-                'word_data': word_suggestions,
-                'message': suggestion['message']
-            })
-        else:
-            return jsonify({
-                'success': True,
-                'suggest_addition': False,
-                'message': 'الكلمة موجودة في قاعدة البيانات'
-            })
+        # Note: AdvancedArabicCorrector does not have suggest_word_addition, get_word_suggestions_for_addition
+        # This part of the API might need to be re-evaluated or removed if not supported by the advanced model
+        # For now, returning a placeholder response
+        return jsonify({
+            'success': True,
+            'suggest_addition': False,
+            'message': 'وظيفة اقتراح إضافة الكلمات غير مدعومة حاليًا في المصحح المتقدم.'
+        })
             
     except Exception as e:
         return jsonify({
@@ -402,4 +396,6 @@ if __name__ == '__main__':
     
     # Run the application
     app.run(host='0.0.0.0', port=5000, debug=True)
+
+
 
